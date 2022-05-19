@@ -1,0 +1,70 @@
+/* ::::::::::::::::::::: CSS PAR DEFAUT ::::::::::::::::: */
+
+section {
+    width: 80%;
+    margin: auto;
+}
+img {
+    height : 10rem;
+    width: auto;
+}
+h1, h2 {
+    width: 100%;
+    text-align: center;
+    margin: 3rem;
+}
+
+/* ::::::::::::::::::::: ACCUEIL ::::::::::::::::: */
+.home input {
+    width: 15rem;
+    height: 2rem;
+    background-color: rgb(255, 0, 149);
+    margin: auto;
+}
+.home div {
+    margin: auto;
+    background-color: blue;
+
+}
+.home img {
+    height: 2rem;
+}
+#suggestionsBySort {
+    background-color: aqua;
+}
+#suggestions {
+    background-color: rgb(166, 255, 0);
+}
+
+/* ::::::::::::::::::::: REGIONS ::::::::::::::::: */
+
+.infoRegion div {
+    padding: 1rem 0;
+}
+
+/* ::::::::::::::::::::: VILLES ::::::::::::::::: */
+
+.infoCity{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+/* .infoCity h1, h2 {
+    width: 100%;
+    text-align: center;
+    margin: 3rem;
+} */
+.infoCity h2 {
+    width: 50%;
+    margin: auto;
+}
+.infoCity img {
+    height : 18rem;
+    max-width: 50%;
+
+}
+.infoCity div {
+    width: 45%;
+    margin: auto;
+}
+
