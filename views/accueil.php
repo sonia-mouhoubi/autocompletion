@@ -1,6 +1,3 @@
-<?php 
-require_once('../traitement/traitement-recherche.php');
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,24 +14,20 @@ require_once('../traitement/traitement-recherche.php');
     </head>
         
     <body>
-    <?php require_once('../views/require/header.php');?>
+        <main class="home">
+            <section>
+                <h1>Recherche</h1>
 
-    <main>
-        <section class="infoRegion">
-            <h1>Résultat de la région <?= ucfirst($value['regions'])?></h1>
+                <form action="" method="GET" id="form">
+                        <input type="text" id="search" name="search" placeholder="Rechercher par région ou par ville">
 
-            <?php foreach($infosRegions as $value) {?>
-            <a href="element.php?id=<?= $value['id']?>">
-                <div>
-                    <p id="infosCity"><strong><?= $value['titre']?></strong></p>
-                    <img src="../assets/img/<?= $value['image']?>" alt="img">
-                    <p>Raptim igitur properantes ut motus sui rumores celeritate nimia praevenirent...</p>
-                </div>
-            </a>
-            <?php } ?>
-        </section>
-    </main>
+                    <div id="suggestionsFirstLetter"></div>
 
+                    <div id="suggestionsBetweenLetter"></div>
+                </form>
+            </section>
+        </main>
+       
         <?php require_once('../views/require/footer.php');?>
     </body>
 </html>

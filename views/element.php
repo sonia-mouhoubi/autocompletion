@@ -1,12 +1,5 @@
 <?php 
-require_once('../models/CitiesRegions.php');
-if (isset($_GET['id'])) {
-    $id_url = explode("?id=",$_GET['id']);
-    $id_url = end($id_url);
-
-    $citiesRegions = new CitiesRegions;
-    $InfosCityById = $citiesRegions->getCityById($id_url);
-}
+require_once('../traitement/traitement-element.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,9 +9,11 @@ if (isset($_GET['id'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Barre de recherche</title>
         <meta name="description" content="Moteur de recherche">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link href="../assets/css/styles.css" rel="stylesheet"/> 
         <script src="../assets/js/scripts.js"></script>
-        <!-- <script src="../assets/js/script-regions.js"></script> -->
     </head>
         
     <body>

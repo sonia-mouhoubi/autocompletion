@@ -1,5 +1,22 @@
-/* ::::::::::::::::::::: CSS PAR DEFAUT ::::::::::::::::: */
-
+/* ::::::::::::::::::::: CSS DE BASE ::::::::::::::::: */
+* {
+	box-sizing : border-box;
+    margin: 0;
+    padding: 0;
+}
+html,body {
+    width: 100%;
+}
+body {
+    scroll-behavior: smooth;
+    line-height: 1.15;
+	margin : 0;
+    font-family: 'Roboto', sans-serif;    
+    font-size: 1em;
+}
+main {
+    min-height: 90vh;
+}
 section {
     width: 80%;
     margin: auto;
@@ -7,64 +24,127 @@ section {
 img {
     height : 10rem;
     width: auto;
+    max-width: 100%;
+}
+h1 {
+    font-size: 3rem;
+    color : #0da49c;
 }
 h1, h2 {
     width: 100%;
     text-align: center;
-    margin: 3rem;
+    padding: 2rem;
 }
-
-/* ::::::::::::::::::::: ACCUEIL ::::::::::::::::: */
-.home input {
-    width: 15rem;
-    height: 2rem;
-    background-color: rgb(255, 0, 149);
+p {
+    padding: 0.5rem;
+}
+a {
+	text-decoration : none;
+	font-weight : bold;
+    color: black;
+}
+/* Barre de recherche */
+#form {
+    text-align: center;
+    width: 100%;
+}
+#form input {
+    width: 80%;
+    height: 3rem;
     margin: auto;
+    padding-left: 1rem;
+    border-radius: 25px;
 }
-.home div {
+#suggestionsFirstLetter {
     margin: auto;
-    background-color: blue;
-
-}
-.home img {
-    height: 2rem;
-}
-#suggestionsBySort {
-    background-color: aqua;
-}
-#suggestions {
-    background-color: rgb(166, 255, 0);
-}
-
-/* ::::::::::::::::::::: REGIONS ::::::::::::::::: */
-
-.infoRegion div {
     padding: 1rem 0;
 }
 
-/* ::::::::::::::::::::: VILLES ::::::::::::::::: */
+/* ::::::::::::::::::::: HEADER ::::::::::::::::: */
+header {
+    padding: 1rem;
+}
+nav {
+    text-align: center;
+    padding: 1rem;
+}
+header #form input {
+    height: 2rem;
+    width: 20%;
+}
 
-.infoCity{
-    margin: auto;
+
+/* ::::::::::::::::::::: FOOTER ::::::::::::::::: */
+footer a {
+    display: block;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* ::::::::::::::::::::: ACCUEIL ::::::::::::::::: */
+.home {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
-/* .infoCity h1, h2 {
+.home section {
     width: 100%;
-    text-align: center;
-    margin: 3rem;
-} */
-.infoCity h2 {
-    width: 50%;
-    margin: auto;
 }
-.infoCity img {
-    height : 18rem;
-    max-width: 50%;
+.home h1 {
+    font-size: 4rem;
+}
+.home h2 {
+    font-size: 0.9rem;
+    font-style: italic;
+}
 
+/* ::::::::::::::::::::: REGIONS ::::::::::::::::: */
+.infoRegion div {
+    padding: 1rem 0;
 }
-.infoCity div {
-    width: 45%;
+.infoRegion p {
+    padding: 1rem;
+}
+
+/* ::::::::::::::::::::: VILLES ::::::::::::::::: */
+.infoCity img {
+    display: block;
     margin: auto;
+}
+.infoCity p {
+    padding: 1rem;
+}
+
+/*============================================== VERSION DESKTOP ========================================*/
+@media screen and (min-width: 1024px){
+    /* ::::::::::::::::::::: CSS DE BASE ::::::::::::::::: */
+    #form input {
+        width: 40%;  
+    }
+
+    /* ::::::::::::::::::::: HEADER ::::::::::::::::: */
+    header {
+        display: flex;
+    }
+
+    /* ::::::::::::::::::::: VILLES ::::::::::::::::: */
+    .infoCity {
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .infoCity h2 {
+        width: 50%;
+        margin: auto;
+    }
+    .infoCity img {
+        height : 18rem;
+        max-width: 50%;
+    }
+    .infoCity div {
+        width: 45%;
+        margin: auto;
+    }
 }
 

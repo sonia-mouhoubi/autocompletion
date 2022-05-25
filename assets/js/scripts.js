@@ -1,72 +1,137 @@
 window.addEventListener("DOMContentLoaded", () => {
+    const search = document.querySelector('input'); 
 
-    fetch("traitement/traitement-cities.php")
+    search.addEventListener('keyup', function() {
+
+        let form = document.querySelector('#form');
+        let data = new FormData(form);
+
+        fetch("../traitement/traitement-citiesFirstLetter.php", {
+            method: "POST", 
+            body: data,
+        }) 
+        .then((resp) => resp.json())
+        .then((resp) => {
+
+            const citiesFirstLetter = resp;
+            const input = search.value;
+
+            const resCityByFirstLetters = citiesFirstLetter.filter(city => city.titre.toLocaleLowerCase().includes(input.toLocaleLowerCase()));
+
+            let suggest = '';
+
+            if(input !='')
+            {
+                // if(suggest != '')
+                // {
+                    resCityByFirstLetters.forEach(res =>
+
+                        suggest +=`
+
+                        <p class="suggestion"><a href="element.php?id=${res.id}">${res.titre}</a></p>
+                        `
+                    )
+                // }
+                // else 
+                // {
+                //     suggest = '<p class="suggestion">Aucune suggestion n\'a été trouvé.</p>';
+                // }
+            }  
+
+            document.querySelector('#suggestionsFirstLetter').innerHTML = suggest;
+        }) 
+
+        // let formulaire = document.querySelector('#form');
+        // let info = new FormData(formulaire);
+
+        fetch("../traitement/traitement-regionsFirstLetter.php", {
+            method: "POST", 
+            body: data,
+        })
         .then((response) => response.json())
         .then((response) => {
-           
-        const villes = response;
-     
-        // console.log(villes);
 
-        fetch("traitement/traitement-regions.php")
-            .then((res) => res.json())
-            .then((res) => {
-            
-            const regions = res;
-               
-            // On récupère l'évenement grâce à son ID
-            const search = document.getElementById('search'); 
+            const regionsFirstLetter = response;  
+            const input2 = search.value;
 
-            // Permet de récupérer à l'écoute de l'évènement (lorsque on relève la touche du clavier) la lettre saisie.
-            search.addEventListener('keyup', function() {
+            const resRegionByFirstLetters = regionsFirstLetter.filter(region => region.regions.toLocaleLowerCase().includes(input2.toLocaleLowerCase()));
 
-                // On récupère le résultat dans une constante. 
-                const input = search.value;
+            let suggestion = '';
 
-                // On filtre pour récupérer le mot qui comporte la lettre saisie ds l'input et avec toLocaleLowerCase on lui dit qu'il récupère la même chose que se soit en majuscule ou en minuscule.
 
-                const resultCity = villes.filter(ville => ville.titre.toLocaleLowerCase().includes(input.toLocaleLowerCase()));
+            if(input2 !='')
+            {
+                resRegionByFirstLetters.forEach(result =>
 
-                const resultRegion = regions.filter(region => region.regions.toLocaleLowerCase().includes(input.toLocaleLowerCase()));
+                    suggestion +=`
 
-                let suggestion = '';
-                // let lien = '';
+                    <p class="suggestion"><a href="recherche.php?search=${result.regions}">${result.regions}</a></p>
+                    `
+                )
+            }
 
-                if(input !='')
-                {
-                    resultCity.forEach(resultItem =>
-
-                        suggestion +=`
-
-                        <p class="suggestion"><a href="views/element.php?id=${resultItem.id}">${resultItem.titre}</a></p>
-                        `
-                        // lien +=`
-
-                        // <a href="views/recherche.php?id=${resultItem.id}">
-                        // `
-                    )
-                    resultRegion.forEach(resItem =>
-
-                        suggestion +=`
-    
-                        <p class="suggestion"><a href="views/recherche.php?search=${resItem.regions}">${resItem.regions}</a></p>
-                        `
-                    ) 
-                }
-
-                document.querySelector('#suggestions').innerHTML = suggestion;  
-            })
+            document.querySelector('#suggestionsFirstLetter').insertAdjacentHTML('afterbegin', suggestion);
         })
-    })
 
-    fetch("traitement/traitement-orderLetter.php")
-        .then((respons) => respons.json())
-        .then((respons) => {
 
-            const letter = respons;
-     
-            console.log(letter);
+// RECHERCHE LETTRE DANS LE MOT
 
-    })
-    
- });
+        fetch("../traitement/traitement-citiesBetweenLetter.php", {
+            method: "POST", 
+            body: data,
+        })
+        .then((resp) => resp.json())
+        .then((resp) => {
+
+            const citiesFirstLetter = resp;
+            const input = search.value;
+
+            const resCityByFirstLetters = citiesFirstLetter.filter(city => city.titre.toLocaleLowerCase().includes(input.toLocaleLowerCase()));
+
+            let suggest = '';
+
+            if(input !='')
+            {
+                resCityByFirstLetters.forEach(res =>
+
+                    suggest +=`
+
+                    <p class="suggestion"><a href="element.php?id=${res.id}">${res.titre}</a></p>
+                    `
+                )
+
+            }  
+            document.querySelector('#suggestionsBetweenLetter').innerHTML = suggest;
+        }) 
+
+        fetch("../traitement/traitement-regionsBetweenLetter.php", {
+            method: "POST", 
+            body: data,
+        })
+        .then((response) => response.json())
+        .then((response) => {
+
+            const regionsFirstLetter = response;  
+            const input2 = search.value;
+
+            const resRegionByFirstLetters = regionsFirstLetter.filter(region => region.regions.toLocaleLowerCase().includes(input2.toLocaleLowerCase()));
+
+            let suggestion = '';
+
+
+            if(input2 !='')
+            {
+                resRegionByFirstLetters.forEach(result =>
+
+                    suggestion +=`
+
+                    <p class="suggestion"><a href="recherche.php?search=${result.regions}">${result.regions}</a></p>
+                    `
+                )
+            }
+
+            document.querySelector('#suggestionsBetweenLetter').insertAdjacentHTML('afterbegin', suggestion);
+        })
+    })  
+})
+  
