@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once('../models/Cities.php');
 
 $citiesRegions = new Cities;

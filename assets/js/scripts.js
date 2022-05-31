@@ -70,7 +70,9 @@ window.addEventListener("DOMContentLoaded", () => {
                 )
             }
 
-            document.querySelector('#suggestionsFirstLetter').insertAdjacentHTML('afterbegin', suggestion);
+            // document.querySelector('#suggestionsFirstLetter').insertAdjacentHTML('afterbegin', suggestion);
+
+            document.querySelector('#suggestFirstLetter').innerHTML = suggestion;
         })
 
 
@@ -130,7 +132,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 )
             }
 
-            document.querySelector('#suggestionsBetweenLetter').insertAdjacentHTML('afterbegin', suggestion);
+            document.querySelector('#suggestBetweenLetter').innerHTML = suggestion;
         })
     })  
 })

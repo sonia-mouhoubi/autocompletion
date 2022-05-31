@@ -13,7 +13,7 @@ require_once('../traitement/traitement-element.php');
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link href="../assets/css/styles.css" rel="stylesheet"/> 
-        <script src="../assets/js/scripts.js"></script>
+        <script src="../assets/js/scripts.js" defer></script>
     </head>
         
     <body>
